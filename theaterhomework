@@ -1,0 +1,191 @@
+CREATE TABLE "customer_profile" (
+  "customer_id" serial PRIMARY KEY,
+  "customer_fn" varchar(50),
+  "customer_ln" varchar(50),
+  "customer_email" varchar(50),
+  "username" varchar(16),
+  "password" varchar(10),
+  "subscription_type" varchar(10),
+  "account_status" bool
+);
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Albert', 'Camus', 'ultimatequestion@philosophy.com', 'sisyphus', '1')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Fyodor', 'Dostoevsky', 'thebrothers@karamazov.com', 'aloyasha', '0')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Claude', 'McKay', 'dancer@renaissance.com', 'king_of_sonnets', '1')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Vladimir', 'Solovyov', 'sophia@divine.com', 'fatherz', '1')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Langston', 'Hughes', 'itooam@america.com', 'avoice', '1')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('Soren', 'Kierkegaard', 'takealep@sk.com', 'trueknight', '1')
+
+insert into customer_profile(customer_fn, customer_ln, customer_email, username, account_status)
+values('James', 'Baldwin', 'thepindrop@speech.com', 'the_philosopher', '1')
+
+CREATE TABLE "movies" (
+  "film_id" serial PRIMARY KEY,
+  "film_name" varchar(50),
+  "genre_id" integer,
+  "genre_name" varchar(20),
+  "year_made" integer
+);
+
+insert into movies(film_name, genre_id, year_made)
+values('1917', '1', '2019')
+
+insert into movies(film_name, genre_id, year_made)
+values('A Hidden Life', '4', '2019')
+
+insert into movies(film_name, genre_id, year_made)
+values('The Suicide Squad', '2', '2021')
+
+insert into movies(film_name, genre_id, year_made)
+values('Mad Max: Fury Road', '3', '2016')
+
+insert into movies(film_name, genre_id, year_made)
+values('Dune', '1', '2021')
+
+insert into movies(film_name, genre_id, year_made)
+values('Death of Stalin', '5', '2017')
+
+CREATE TABLE "staff" (
+  "staff_id" serial PRIMARY KEY,
+  "staff_fn" varchar(50),
+  "staff_ln" varchar(50),
+  "role_id" int,
+  "role_name" varchar(50)
+);
+
+insert into staff(staff_fn, staff_ln, role_id, role_name)
+values ('Catherine', 'OHare', '1', 'manager')
+
+insert into staff(staff_fn, staff_ln, role_id, role_name)
+values('Bill', 'Murray', '1', 'manager')
+
+insert into staff(staff_fn, staff_ln, role_id, role_name)
+values ('Daniel', 'Kaluuya', '1', 'manager')
+
+insert into staff(staff_fn, staff_ln, role_id, role_name)
+values ('Michael', 'Keeton', '2', 'bartender')
+
+insert into staff(staff_fn, staff_ln, role_id, role_name)
+values ('Danny', 'DaVito', '2', 'bartender')
+
+CREATE TABLE "parking" (
+  "parking_id" serial PRIMARY KEY,
+  "customer_id" integer,
+  "car_make" varchar(20),
+  "car_model" varchar(40),
+  "valet_id" integer
+);
+
+insert into parking(customer_id, car_make, car_model, valet_id)
+values ('1', 'Mercedes', 'AMG GT', '3')
+
+insert into parking(customer_id, car_make, car_model, valet_id)
+values ('3', 'Porsche', '718', '3')
+
+insert into parking(customer_id, car_make, car_model, valet_id)
+values ('5', 'BMW', 'iX', '2')
+
+insert into parking(customer_id, car_make, car_model, valet_id)
+values ('4', 'Mercedes', 'Maybach GLS SUV', '4')
+
+CREATE TABLE "restaurant" (
+  "r_revenue" serial PRIMARY KEY,
+  "bartender_id" int,
+  "customer_id" int,
+  "drink_id" int,
+  "drink_name" varchar(30),
+  "food_id" int,
+  "food_name" varchar(20),
+  "bar_sales" numeric(100, 2)
+);
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('5', '1', '51', 'lemon basil martini', '12', 'pizza', '73.49')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('4', '4', '10', 'old fashioned', '8', 'chicken fingers', '62.34')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('5', '2', '9', 'whiskey sour', '4', 'salmon filet', '33.12')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('5', '5','55', 'manhattan', '23', 'peppered stk/chkn', '127.82')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('5', '7', '14', 'martini', '3', 'fish and chips', '27.03')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('5', '6', '2', 'double shot patron', '34', 'the hungry man', '246.92')
+
+insert into restaurant(bartender_id, customer_id, drink_id, drink_name, food_id, food_name, bar_sales)
+values('4', '3', '99', 'domaine rou musigny', '101', 'gld truf steak', '17664.32')
+
+CREATE TABLE "event_room" (
+  "event_id" serial PRIMARY KEY,
+  "customer_id" integer,
+  "date_rented" date,
+  "size_of_party" int,
+  "film_id" int,
+  "staff_id" int,
+  "drink_id" int,
+  "food_id" int,
+  "rental_cost" numeric(100, 2)
+);
+
+insert into event_room(customer_id, date_rented, size_of_party, film_id, staff_id, drink_id, food_id, rental_cost)
+values('1', '2021-11-28', '16', '6', '5', '51', '4', '3000.00' )
+
+insert into event_room(customer_id, date_rented, size_of_party, film_id, staff_id, drink_id, food_id, rental_cost)
+values('3', '2021-12-15', '25', '1', '4', '99', '101', '26247.32')
+
+CREATE TABLE "sales" (
+  "transaction_id" serial PRIMARY KEY,
+  "customer_id" int,
+  "staff_id" int,
+  "transaction_type_id" int,
+  "event_id" int,
+  "had_food" bool,
+  "had_drink" bool,
+  "had_movie" bool,
+  "film_id" int,
+  "total_cost" numeric(100, 2)
+);
+
+insert into sales(had_food, had_drink, had_movie, film_id, total_cost)
+values('1', '1', '1', '2', '128.00')
+
+insert into sales(had_food, had_drink, had_movie, film_id, total_cost)
+values('1', '0', '1', '1', '79.00')
+
+ALTER TABLE "parking" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "parking" ADD FOREIGN KEY ("customer_id") REFERENCES "staff" ("staff_id");
+
+ALTER TABLE "restaurant" ADD FOREIGN KEY ("bartender_id") REFERENCES "staff" ("staff_id");
+
+ALTER TABLE "restaurant" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "event_room" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "event_room" ADD FOREIGN KEY ("film_id") REFERENCES "movies" ("film_id");
+
+ALTER TABLE "event_room" ADD FOREIGN KEY ("staff_id") REFERENCES "staff" ("staff_id");
+
+ALTER TABLE "sales" ADD FOREIGN KEY ("customer_id") REFERENCES "customer_profile" ("customer_id");
+
+ALTER TABLE "sales" ADD FOREIGN KEY ("staff_id") REFERENCES "staff" ("staff_id");
+
+ALTER TABLE "sales" ADD FOREIGN KEY ("event_id") REFERENCES "event_room" ("event_id");
+
+ALTER TABLE "sales" ADD FOREIGN KEY ("film_id") REFERENCES "movies" ("film_id");
